@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+<body>
+	<code>
+		<div th:each="y : ${#numbers.sequence( 1, qr.size)}">
+			<span th:each="x : ${#numbers.sequence( 1, qr.size)}"> <!-- IF -->
+				<span th:if="${qr.getModule(x, y)}">█</span> <!-- ELSE --> <span
+				th:unless="${qr.getModule(x, y)}">&nbsp;</span>
+			</span>
+		</div>
+	</code>
+
+	<a th:href="@{http://www.thymeleaf/documentation.html}">thymeleaf</a>
+	<a th:href="@{/rec(id=3)}">rec</a>
+	<a th:href="@{~/rec/{id}(id=3)}">rec</a>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+
+<body>
+	<div class="container">
+		<fieldset>
+			<legend>Database Output</legend>
+			<table>
+				<tr th:each="rec : ${recs}">
+					<td th:text="${rec.key}" />
+					<td th:text="${rec.value}" />
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+</body>
+</html>
