@@ -1,8 +1,0 @@
- __    __   ___   
-|  |  |  | |__ \  
-|  |__|  |    ) | 
-|   __   |   / /  
-|  |  |  |  / /_  
-|__|  |__| |____| 
-                                    
-:: Built with Spring Boot :: ${spring-boot.version}
