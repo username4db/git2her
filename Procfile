@@ -1,1 +1,1 @@
-web: java -jar target/git2her.jar -Dspring.profiles.active=heroku
+web: java -jar target/git2her-1.0.jar -Dspring.profiles.active=heroku
