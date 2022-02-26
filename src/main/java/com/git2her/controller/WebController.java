@@ -3,8 +3,12 @@ package com.git2her.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.imageio.ImageIO;
 
@@ -31,6 +35,8 @@ public class WebController {
 
 	@RequestMapping("/empty")
 	String empty() {
+		LOGGER.info(TimeZone.getDefault().getDisplayName());
+		LOGGER.info(Locale.getDefault().getDisplayName());
 		return "empty.html";
 	}
 
@@ -42,8 +48,8 @@ public class WebController {
 	@RequestMapping("/motp/{secret}/{PIN}")
 	public String motp(Map<String, Object> model, @PathVariable(value = "secret") String secret,
 			@PathVariable(value = "PIN") String PIN) {
-		LOGGER.info(secret);
-		LOGGER.info(PIN);
+//		LOGGER.info(secret);
+//		LOGGER.info(PIN);
 		String epoch = Long.toString(System.currentTimeMillis());
 		epoch = epoch.substring(0, epoch.length() - 4);
 		LOGGER.info(epoch);
