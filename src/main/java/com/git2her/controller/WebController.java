@@ -29,6 +29,11 @@ public class WebController {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
+	@RequestMapping("/empty")
+	String empty() {
+		return "empty.html";
+	}
+
 	@RequestMapping("/")
 	String index() {
 		return "index.html";
