@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+<html>
 <head>
 </head>
 <body>
 	<div class="container">
 		<H1 class="translate-middle" th:text="${motp}"></H1>
 	</div>
-	<script type="text/javascript">
-		setTimeout(function() {
-			location = ''
-		}, 15 * 60 * 1000)
-	</script>
 </body>
 
 </html>

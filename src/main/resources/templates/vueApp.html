@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>vueApp</title>
+<script src="https://unpkg.com/vue@3.0.2""></script>
+</head>
+<body>
+	<div id="vueApp">
+		<ul>
+			<li v-for="item in items">
+				<!--  --> <a :href="item.value">{{ item.key }}</a>
+			</li>
+		</ul>
+		<button @click="toggle">
+			<span v-if="show">hide</span>
+			<!--  -->
+			<span v-else>show</span>
+		</button>
+
+	</div>
+	<script src="js/vueApp.js"></script>
+</body>
+</html>
