@@ -33,6 +33,11 @@ public class WebController {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
+	@RequestMapping("/vue")
+	String vue() {
+		return "vueApp.html";
+	}
+
 	@RequestMapping("/empty")
 	String empty() {
 		LOGGER.info(TimeZone.getDefault().getDisplayName());
