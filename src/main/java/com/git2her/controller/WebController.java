@@ -50,7 +50,8 @@ public class WebController {
 	}
 
 	@RequestMapping("/motp/{secret}/{PIN}")
-	public String motp(Map<String, Object> model, @PathVariable(value = "secret") String secret,
+	public String motp(Map<String, Object> model, //
+			@PathVariable(value = "secret") String secret, //
 			@PathVariable(value = "PIN") String PIN) {
 		MD5 hash = new MD5(StringUtils.substring(Long.toString(Instant.now().getEpochSecond()), 0, -1) //
 				+ secret //
