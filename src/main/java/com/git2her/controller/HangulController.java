@@ -1,7 +1,7 @@
 package com.git2her.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +19,7 @@ import com.git2her.service.HangulService;
 @RequestMapping(value = "/hangul")
 public class HangulController {
 
-	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	private final static Logger LOGGER = LogManager.getLogger(HangulController.class);
 
 	@Autowired
 	private HangulService service;

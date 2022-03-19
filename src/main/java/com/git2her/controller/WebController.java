@@ -3,8 +3,6 @@ package com.git2her.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -13,8 +11,8 @@ import java.util.TimeZone;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,7 +29,7 @@ import com.git2her.utils.qrcode.QrSegment;
 @RequestMapping(value = "/")
 public class WebController {
 
-	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	private final static Logger LOGGER = LogManager.getLogger(WebController.class);
 
 	@RequestMapping("/vue")
 	String vue() {
@@ -53,8 +51,6 @@ public class WebController {
 	@RequestMapping("/motp/{secret}/{PIN}")
 	public String motp(Map<String, Object> model, @PathVariable(value = "secret") String secret,
 			@PathVariable(value = "PIN") String PIN) {
-//		LOGGER.info(secret);
-//		LOGGER.info(PIN);
 		String epoch = Long.toString(System.currentTimeMillis());
 		epoch = epoch.substring(0, epoch.length() - 4);
 		LOGGER.info(epoch);
