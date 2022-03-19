@@ -3,6 +3,7 @@ package com.git2her.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -32,12 +33,12 @@ public class WebController {
 	private final static Logger LOGGER = LogManager.getLogger(WebController.class);
 
 	@RequestMapping("/vue")
-	String vue() {
+	public String vue(Map<String, Object> model) {
 		return "vueApp.html";
 	}
 
 	@RequestMapping("/empty")
-	String empty() {
+	public String empty(Map<String, Object> model) {
 		LOGGER.info(TimeZone.getDefault().getDisplayName());
 		LOGGER.info(Locale.getDefault().getDisplayName());
 		return "empty.html";
@@ -51,11 +52,9 @@ public class WebController {
 	@RequestMapping("/motp/{secret}/{PIN}")
 	public String motp(Map<String, Object> model, @PathVariable(value = "secret") String secret,
 			@PathVariable(value = "PIN") String PIN) {
-		String epoch = Long.toString(System.currentTimeMillis());
-		epoch = epoch.substring(0, epoch.length() - 4);
-		LOGGER.info(epoch);
-		MD5 hash = new MD5(epoch + secret + PIN);
-		LOGGER.info(hash.asHex());
+		MD5 hash = new MD5(StringUtils.substring(Long.toString(Instant.now().getEpochSecond()), 0, -1) //
+				+ secret //
+				+ PIN);
 		model.put("motp", hash.asHex().substring(0, 6));
 		return "motp.html";
 	}
