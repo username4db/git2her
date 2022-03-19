@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,8 +45,17 @@ public class WebController {
 		return "empty.html";
 	}
 
+	@RequestMapping("/test")
+	public ResponseEntity<String> test(RequestEntity<String> req) {
+		return ResponseEntity //
+				.status(HttpStatus.OK) //
+				.header("", "") //
+				.contentType(MediaType.TEXT_PLAIN) //
+				.body(req.getBody());
+	}
+
 	@RequestMapping("/")
-	String index() {
+	public String index() {
 		return "index.html";
 	}
 
