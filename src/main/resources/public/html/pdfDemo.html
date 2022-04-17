@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js"></script>
+</head>
+<body>
+
+	<script>
+		var docDefinition = {
+			pageSize : 'A4',
+			pageOrientation : 'portrait',
+			pageMargins : [ 40, 60, 40, 60 ],
+			styles : {
+				header : {
+					fontSize : 18,
+					bold : true,
+					margin : [ 0, 0, 0, 10 ]
+				},
+				subheader : {
+					fontSize : 16,
+					bold : true,
+					margin : [ 0, 10, 0, 5 ]
+				},
+				tableExample : {
+					margin : [ 0, 5, 0, 15 ]
+				},
+				tableHeader : {
+					bold : true,
+					fontSize : 13,
+					color : 'black'
+				}
+			},
+			info : {
+				title : '標題',
+				author : '作者',
+				subject : '主旨',
+				keywords : '關鍵字',
+			},
+			watermark : {
+				text : {
+					text : '浮水印'
+				},
+				color : 'grey',
+				opacity : 0.1,
+				bold : false,
+				italics : false,
+				fontSize : 80,
+				angle : -45
+			},
+			background : '背景',
+			defaultStyle : {
+				font : 'edukai'
+			},
+			content : [
+					{
+						qr : 'text in QR',
+						foreground : 'black',
+						background : 'white'
+					},
+					{
+						style : 'header',
+						text : 'header'
+					},
+					{
+						style : 'tableExample',
+						color : '#444',
+						table : {
+							widths : [ 'auto', 'auto', 'auto' ],
+							headerRows : 2,
+							// keepWithHeaderRows: 1,
+							body : [
+									[ {
+										text : 'Header with Colspan = 2',
+										style : 'tableHeader',
+										colSpan : 2,
+										alignment : 'center'
+									}, {}, {
+										text : 'Header 3',
+										style : 'tableHeader',
+										alignment : 'center'
+									} ],
+									[ {
+										text : 'Header 1',
+										style : 'tableHeader',
+										alignment : 'center'
+									}, {
+										text : 'Header 2',
+										style : 'tableHeader',
+										alignment : 'center'
+									}, {
+										text : 'Header 3',
+										style : 'tableHeader',
+										alignment : 'center'
+									} ],
+									[ 'Sample value 1', 'Sample value 2',
+											'Sample value 3' ],
+									[
+											{
+												rowSpan : 3,
+												text : 'rowSpan set to 3\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor'
+											}, 'Sample value 2',
+											'Sample value 3' ],
+									[ '', 'Sample value 2', 'Sample value 3' ],
+									[ 'Sample value 1', 'Sample value 2',
+											'Sample value 3' ],
+									[
+											'Sample value 1',
+											{
+												colSpan : 2,
+												rowSpan : 2,
+												text : 'Both:\nrowSpan and colSpan\ncan be defined at the same time'
+											}, '' ],
+									[ 'Sample value 1', '', '' ], ]
+						}
+					}, ]
+		};
+		pdfMake.fonts = {
+			edukai : {
+				normal : 'https://git2her.herokuapp.com/html/edukai-4.0.ttf',
+				bold : 'https://git2her.herokuapp.com/html/edukai-4.0.ttf',
+				italics : 'https://git2her.herokuapp.com/html/edukai-4.0.ttf',
+				bolditalics : 'https://git2her.herokuapp.com/html/edukai-4.0.ttf',
+			}
+		}
+		pdfMake.createPdf(docDefinition).open();
+		/*
+		var win = window.open('', 'PDF');
+		pdfMake.createPdf(docDefinition).open({}, win);
+		 */
+	</script>
+</body>
+</html>
