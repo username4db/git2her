@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.git2her.config.AppProperty;
 import com.git2her.utils.MD5;
 import com.git2her.utils.qrcode.QrCode;
 import com.git2her.utils.qrcode.QrSegment;
@@ -32,6 +34,9 @@ import com.git2her.utils.qrcode.QrSegment;
 public class WebController {
 
 	private final static Logger LOGGER = LogManager.getLogger(WebController.class);
+
+	@Autowired
+	AppProperty appProperty;
 
 	@RequestMapping("/vue")
 	public String vue(Map<String, Object> model) {
@@ -67,6 +72,7 @@ public class WebController {
 				+ secret //
 				+ PIN);
 		model.put("hash", hash.asHex().substring(0, 6));
+		model.put("version", appProperty.getAppVersion());
 		return "motp.html";
 	}
 
