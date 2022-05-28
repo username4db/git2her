@@ -43,7 +43,7 @@ public class EmptyController {
 				.status(HttpStatus.OK) //
 				.header("", "") //
 				.contentType(MediaType.TEXT_PLAIN) //
-				.body(configProperty.toString());
+				.body(configProperty.toString() + ";" + appProperty.toString());
 	}
 
 }

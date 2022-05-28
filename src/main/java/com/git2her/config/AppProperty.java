@@ -12,6 +12,11 @@ import org.springframework.context.annotation.PropertySources;
 //@ConfigurationProperties(prefix = "app")
 public class AppProperty {
 
+	@Override
+	public String toString() {
+		return "AppProperty [version=" + version + ", secret=" + secret + ", PIN=" + PIN + "]";
+	}
+
 	@Value("${app.version:unknown}")
 	private String version;
 
