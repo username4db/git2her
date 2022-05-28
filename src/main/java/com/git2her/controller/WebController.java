@@ -1,11 +1,10 @@
 package com.git2her.controller;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,7 @@ import com.git2her.utils.MD5;
 @RequestMapping(value = "/")
 public class WebController {
 
-	private final static Logger LOGGER = LogManager.getLogger(WebController.class);
+//	private final static Logger LOGGER = LogManager.getLogger(WebController.class);
 
 	@Autowired
 	AppProperty appProperty;
@@ -30,7 +29,6 @@ public class WebController {
 
 	@RequestMapping("motp")
 	public String motp(Map<String, Object> model) {
-
 		MD5 hash = new MD5(StringUtils.substring(Long.toString(Instant.now().getEpochSecond()), 0, -1) //
 				+ appProperty.getSecret() //
 				+ appProperty.getPIN());

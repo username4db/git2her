@@ -11,12 +11,18 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({ //
 		@PropertySource("classpath:config/config.properties") //
 })
-public class ConfigProperties {
+public class ConfigProperty {
 
 	private class Credentials {
 		private String authMethod;
 		private String username;
 		private String password;
+
+		@Override
+		public String toString() {
+			return "Credentials [authMethod=" + authMethod + ", username=" + username + ", password=" + password + "]";
+		}
+
 	}
 
 	private String host;
@@ -25,4 +31,11 @@ public class ConfigProperties {
 	private List<String> defaultRecipients;
 	private Map<String, String> additionalHeaders;
 	private Credentials credentials;
+
+	@Override
+	public String toString() {
+		return "ConfigProperty [host=" + host + ", port=" + port + ", from=" + from + ", defaultRecipients="
+				+ defaultRecipients + ", additionalHeaders=" + additionalHeaders + ", credentials=" + credentials + "]";
+	}
+
 }

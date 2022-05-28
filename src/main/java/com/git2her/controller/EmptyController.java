@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.git2her.config.AppProperty;
+import com.git2her.config.ConfigProperty;
 
 @Controller
 @RequestMapping(value = "/empty")
@@ -25,6 +26,9 @@ public class EmptyController {
 	@Autowired
 	AppProperty appProperty;
 
+	@Autowired
+	ConfigProperty configProperty;
+
 	@RequestMapping("")
 	public String empty(Map<String, Object> model) {
 		LOGGER.info(TimeZone.getDefault().getDisplayName());
@@ -34,11 +38,12 @@ public class EmptyController {
 
 	@RequestMapping("test")
 	public ResponseEntity<String> test(RequestEntity<String> req) {
+
 		return ResponseEntity //
 				.status(HttpStatus.OK) //
 				.header("", "") //
 				.contentType(MediaType.TEXT_PLAIN) //
-				.body(req.getBody());
+				.body(configProperty.toString());
 	}
 
 }
