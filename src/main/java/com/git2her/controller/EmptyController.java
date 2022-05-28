@@ -25,14 +25,14 @@ public class EmptyController {
 	@Autowired
 	AppProperty appProperty;
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String empty(Map<String, Object> model) {
 		LOGGER.info(TimeZone.getDefault().getDisplayName());
 		LOGGER.info(Locale.getDefault().getDisplayName());
 		return "empty.html";
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping("test")
 	public ResponseEntity<String> test(RequestEntity<String> req) {
 		return ResponseEntity //
 				.status(HttpStatus.OK) //

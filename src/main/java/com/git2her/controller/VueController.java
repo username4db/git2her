@@ -17,7 +17,7 @@ public class VueController {
 	@Autowired
 	AppProperty appProperty;
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String vue(Map<String, Object> model) {
 		return "vueApp.html";
 	}
