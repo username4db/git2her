@@ -45,9 +45,7 @@ public class WebController {
 				+ secret //
 				+ PIN);
 		model.put("hash", hash.asHex().substring(0, 6));
-		model.put("version", appProperty.getAppVersion());
-		LOGGER.info(appProperty.getAppVersion());
+		model.put("version", appProperty.getVersion());
 		return "motp.html";
 	}
-
 }

@@ -1,18 +1,25 @@
 package com.git2her.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 
-@Component
+@Configuration
+@PropertySources({ //
+		@PropertySource("classpath:config/app.properties") //
+})
+//@ConfigurationProperties(prefix = "app")
 public class AppProperty {
 
-	@Value("${app.version:2022-05-28}")
-	private String appVersion;
+	@Value("${app.version:unknown}")
+	private String version;
 
-	@Value("${app.secret:2022-05-28}")
+	@Value("${app.motp.secret:40e2936b22f5e806}")
 	private String secret;
 
-	@Value("${app.PIN:40e2936b22f5e806}")
+	@Value("${app.motp.PIN:7783}")
 	private String PIN;
 
 	public String getSecret() {
@@ -23,8 +30,8 @@ public class AppProperty {
 		return PIN;
 	}
 
-	public String getAppVersion() {
-		return appVersion;
+	public String getVersion() {
+		return version;
 	}
 
 }
