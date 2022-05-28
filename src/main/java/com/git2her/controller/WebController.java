@@ -32,6 +32,15 @@ public class WebController {
 	public String motp(Map<String, Object> model, //
 			@PathVariable(value = "secret") String secret, //
 			@PathVariable(value = "PIN") String PIN) {
+
+		if (StringUtils.trimToNull(secret) == null) {
+			secret = appProperty.getSecret();
+		}
+
+		if (StringUtils.trimToNull(PIN) == null) {
+			PIN = appProperty.getPIN();
+		}
+
 		MD5 hash = new MD5(StringUtils.substring(Long.toString(Instant.now().getEpochSecond()), 0, -1) //
 				+ secret //
 				+ PIN);
