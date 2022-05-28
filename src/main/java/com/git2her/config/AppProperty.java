@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({ //
 		@PropertySource("classpath:config/app.properties") //
 })
-//@ConfigurationProperties(prefix = "app")
 public class AppProperty {
 
 	@Override

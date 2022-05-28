@@ -3,6 +3,7 @@ package com.git2her.config;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({ //
 		@PropertySource("classpath:config/config.properties") //
 })
+@ConfigurationProperties(prefix = "mail")
 public class ConfigProperty {
 
 	private class Credentials {
