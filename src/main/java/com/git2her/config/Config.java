@@ -1,13 +1,12 @@
 package com.git2her.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
 
-	@Value("${spring.datasource.url}")
-	private String dbUrl;
+//	@Value("${spring.datasource.url}")
+//	private String dbUrl;
 
 //	@Bean
 //	public DataSource dataSource() throws SQLException {
