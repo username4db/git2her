@@ -42,7 +42,7 @@ public class WebController {
 
 		model.put("hash", hash.asHex().substring(0, 6));
 		model.put("version", appProperty.getVersion());
-		model.put("newHash", byteArrayToHex(digest));
+		model.put("newHash", byteArrayToHex(digest).substring(0,6));
 		return "motp.html";
 	}
 
